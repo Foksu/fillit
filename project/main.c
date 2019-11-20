@@ -6,7 +6,7 @@
 /*   By: vvaltone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 17:28:00 by vvaltone          #+#    #+#             */
-/*   Updated: 2019/11/11 14:06:51 by vvaltone         ###   ########.fr       */
+/*   Updated: 2019/11/20 10:13:33 by vvaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int		main(int argc, char **argv)
 		return (1);
 	}
 	solve(piecelist);
-	free_piecelist(piecelist);
+	create_free_piecelist(piecelist);
 	return (0);
 }

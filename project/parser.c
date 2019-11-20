@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvaltone <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: skellman <skellman@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 17:28:17 by vvaltone          #+#    #+#             */
-/*   Updated: 2019/11/11 14:06:56 by vvaltone         ###   ########.fr       */
+/*   Updated: 2019/11/19 16:16:04 by skellman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int			adjacency_counter(char *buf)
+int			parse_adjacency_counter(char *buf)
 {
 	int i;
 	int count;
@@ -37,7 +37,7 @@ int			adjacency_counter(char *buf)
 	return (count);
 }
 
-int			charcount(char *buf)
+int			parse_charcount(char *buf)
 {
 	int i;
 	int count;
@@ -48,7 +48,7 @@ int			charcount(char *buf)
 	{
 		if (buf[i] && buf[i] != '\n' && buf[i] != '#' && buf[i] != '.')
 			return (0);
-		if (buf[i] == '\n' && !(((i + 1) % 5) == 0))
+		if (buf[i] == '\n' && (!(((i + 1) % 5) == 0)))
 			return (0);
 		if (buf[i] == '#')
 			count++;
@@ -59,16 +59,17 @@ int			charcount(char *buf)
 	return (count);
 }
 
-int			valid(char *buf, int size)
+int			parse_valid(char *buf, int size)
 {
 	int i;
 
 	i = 0;
 	while (i <= size)
 	{
-		if (charcount(buf + i) != 4)
+		if (parse_charcount(buf + i) != 4)
 			return (0);
-		if (adjacency_counter(buf + i) != 6 && adjacency_counter(buf + i) != 8)
+		if (parse_adjacency_counter(buf + i) != 6
+		&& parse_adjacency_counter(buf + i) != 8)
 			return (0);
 		i += 21;
 	}
@@ -87,7 +88,7 @@ t_block		*parser(char *filename)
 	if (bytecount > 544 || bytecount < 19)
 		return (NULL);
 	buf[bytecount] = '\0';
-	if (!valid(buf, bytecount))
+	if (!parse_valid(buf, bytecount))
 		return (NULL);
-	return (createlist(buf, bytecount));
+	return (create_list(buf, bytecount));
 }

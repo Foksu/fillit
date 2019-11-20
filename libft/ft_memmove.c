@@ -6,7 +6,7 @@
 /*   By: vvaltone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 10:32:59 by vvaltone          #+#    #+#             */
-/*   Updated: 2019/10/26 14:09:28 by vvaltone         ###   ########.fr       */
+/*   Updated: 2019/11/20 10:03:37 by vvaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,9 @@ static void	*ft_memcpy_static(void *dst, const void *src, size_t n)
 
 void		*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t			i;
 	unsigned char	*udst;
 	unsigned char	*usrc;
 
-	i = -1;
 	udst = (unsigned char *)dst;
 	usrc = (unsigned char *)src;
 	if (usrc < udst)

@@ -6,13 +6,13 @@
 /*   By: vvaltone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 14:04:54 by vvaltone          #+#    #+#             */
-/*   Updated: 2019/11/11 14:06:39 by vvaltone         ###   ########.fr       */
+/*   Updated: 2019/11/20 10:13:24 by vvaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void		free_piecelist(t_block *list)
+void		create_free_piecelist(t_block *list)
 {
 	t_block *tmp;
 
@@ -24,7 +24,7 @@ void		free_piecelist(t_block *list)
 	}
 }
 
-t_block		*createlist(char *buf, int size)
+t_block		*create_list(char *buf, int size)
 {
 	t_block *current;
 	t_block *beginning;
@@ -37,12 +37,12 @@ t_block		*createlist(char *buf, int size)
 	{
 		if (pieceletter == 'A')
 		{
-			beginning = createpiece(buf + i, pieceletter);
+			beginning = create_piece(buf + i, pieceletter);
 			current = beginning;
 		}
 		else
 		{
-			current->next = createpiece(buf + i, pieceletter);
+			current->next = create_piece(buf + i, pieceletter);
 			current = current->next;
 		}
 		pieceletter++;
@@ -52,7 +52,7 @@ t_block		*createlist(char *buf, int size)
 	return (beginning);
 }
 
-t_block		*createpiece(char *buf, char pieceletter)
+t_block		*create_piece(char *buf, char pieceletter)
 {
 	t_block	*piece_ptr;
 	int		x;
@@ -78,10 +78,10 @@ t_block		*createpiece(char *buf, char pieceletter)
 	piece_ptr->offset_x = 0;
 	piece_ptr->offset_y = 0;
 	piece_ptr->pieceletter = pieceletter;
-	return (move_to_topleft(piece_ptr));
+	return (create_move_to_topleft(piece_ptr));
 }
 
-t_block		*move_to_topleft(t_block *piece)
+t_block		*create_move_to_topleft(t_block *piece)
 {
 	while (piece->piececoords[0] != 0 && \
 			piece->piececoords[2] != 0 && \

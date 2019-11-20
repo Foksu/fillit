@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvaltone <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: skellman <skellman@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 17:28:07 by vvaltone          #+#    #+#             */
-/*   Updated: 2019/11/11 14:06:53 by vvaltone         ###   ########.fr       */
+/*   Updated: 2019/11/18 16:24:33 by skellman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	free_map(t_map *map, int map_size)
+void	map_free(t_map *map, int map_size)
 {
 	int i;
 
@@ -26,7 +26,7 @@ void	free_map(t_map *map, int map_size)
 	ft_memdel((void **)&map);
 }
 
-void	print_map(t_map *map, int size)
+void	map_print(t_map *map, int size)
 {
 	int i;
 
@@ -39,7 +39,7 @@ void	print_map(t_map *map, int size)
 	}
 }
 
-size_t	count_pieces(t_block *piecelist)
+size_t	map_count_pieces(t_block *piecelist)
 {
 	size_t	count;
 
@@ -52,7 +52,7 @@ size_t	count_pieces(t_block *piecelist)
 	return (count);
 }
 
-t_map	*new_map(int map_size)
+t_map	*map_new(int map_size)
 {
 	t_map	*map;
 	int		i;
@@ -69,7 +69,7 @@ t_map	*new_map(int map_size)
 	return (map);
 }
 
-int		square_root(int num)
+int		map_square_root(int num)
 {
 	int	map_size;
 
